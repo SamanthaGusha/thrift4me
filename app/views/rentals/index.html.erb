@@ -1,0 +1,14 @@
+<div class="container" >x
+  <h1>Rentals</h1>
+
+  <%= link_to 'New Rental', new_rental_path %>
+
+  <ul>
+    <% @rentals.each do |rental| %>
+      <li>
+        <%= link_to rental.clothing.title, rental %>
+        - <%= rental.status %>
+      </li>
+    <% end %>
+  </ul>
+</div>

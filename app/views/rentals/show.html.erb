@@ -1,0 +1,24 @@
+<div class="containert">
+  <p>
+    <strong>Clothing:</strong>
+    <%= @rental.clothing.title %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= @rental.user.email %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= @rental.status %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= number_to_currency(@rental.price) %>
+  </p>
+
+  <%= link_to 'Edit', edit_rental_path(@rental) %> |
+  <%= link_to 'Back', rentals_path %>
+</div>
