@@ -14,6 +14,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_110040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bids", force: :cascade do |t|
+    t.float "bid_price"
+    t.string "status"
+    t.bigint "clothing_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clothing_id"], name: "index_bids_on_clothing_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
+  end
+
   create_table "clothings", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -48,6 +59,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_110040) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bids", "clothings"
+  add_foreign_key "bids", "users"
   add_foreign_key "clothings", "users"
   add_foreign_key "rentals", "clothings"
   add_foreign_key "rentals", "users"
