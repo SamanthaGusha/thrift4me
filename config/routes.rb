@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
-  resources :users
+  root to: 'clothings#index'
   resources :clothings
   resources :rentals
   resources :dashboards
