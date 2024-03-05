@@ -1,1 +1,14 @@
 <h2>Clothes</h2>
+
+<div class="container m-4">
+<p><% @clothing.each do |clothing| %></p>
+<div class="row d-flex justify-content-center">
+<div class="card my-5">
+    <p><%= clothing.title %></p>
+    <p><%= clothing.price %></p>
+    <p><%= clothing.size %></p>
+    <p><%= clothing.user_id %></p>
+</div>
+<% end %>
+</div>
+</div>
