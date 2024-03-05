@@ -15,6 +15,9 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :seller, as: :boolean, label: "Seller" %>
+    <%= f.input :buyer, as: :boolean, label: "Buyer" %>
+    <%#= f.collection_check_boxes :options, [[true, 'Seller'], [false, 'Buyer']], :first, :last %>
   </div>
 
   <div class="form-actions">

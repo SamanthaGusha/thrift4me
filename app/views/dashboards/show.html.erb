@@ -1,8 +1,20 @@
-<h1>My Dashboard</h1>
-
-if user role = buyer
-iterate over rentals to show its attributes
-<%= @my_rentals %>
-  else (if user = seller)
-  iterate over clothing to dhow its attributes
-  <%= @my_clothing %>
+<div class="container">
+  <h1>My Dashboard</h1>
+  <ul>
+    <% if current_user.buyer? %>
+      <% @my_rentals.each do |rental| %>
+        <li><%= rental.title %></li>
+        <li><%= rental.description %></li>
+        <li><%= rental.price %></li>
+        <li><%= rental.size %></li>
+      <% end %>
+    <% elsif current_user.seller? %>
+      <% @my_clothing.each do |clothing| %>
+        <li><%= clothing.title %></li>
+        <li><%= clothing.description %></li>
+        <li><%= clothing.price %></li>
+        <li><%= clothing.size %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
