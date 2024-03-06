@@ -10,14 +10,17 @@
 
 # Clear the database to avoid duplication errors
 puts "Clearing the database"
-User.destroy_all
-Clothing.destroy_all
 Rental.destroy_all
+Clothing.destroy_all
+User.destroy_all
 
 # Users
 puts "Creating users"
 user1 = User.create!(email: "user1@thrift.com", password: "password")
 user2 = User.create!(email: "user2@thrift.com", password: "password")
+user3 = User.create!(email: "user3@thrift.com", password: "password")
+user4 = User.create!(email: "user4@thrift.com", password: "password")
+user5 = User.create!(email: "user5@thrift.com", password: "password")
 puts "#{User.count} users created"
 
 # Clothings
@@ -37,19 +40,59 @@ clothing2 = Clothing.create!(
   user_id: user2.id
 )
 
+clothing3 = Clothing.create!(
+  title: "Leather Biker Jacket",
+  description: "Classic leather biker jacket for a rugged look.",
+  price: 80.0,
+  size: "L",
+  user_id: user3.id
+)
+
+clothing4 = Clothing.create!(
+  title: "Striped T-shirt",
+  description: "Casual striped t-shirt for everyday wear.",
+  price: 20.0,
+  size: "XL",
+  user_id: user4.id
+)
+
+clothing5 = Clothing.create!(
+  title: "Boyfriend Jeans",
+  description: "Perfectly baggy denim jeans",
+  price: 60.0,
+  size: "M",
+  user_id: user5.id
+)
+
 # Rentals
 Rental.create!(
   status: "available",
-  price: 10.0,
   clothing_id: clothing1.id,
-  user_id: user2.id
+  user_id: user1.id
 )
 
 Rental.create!(
   status: "rented",
-  price: 8.0,
   clothing_id: clothing2.id,
-  user_id: user1.id
+  user_id: user2.id
+)
+
+Rental.create!(
+  status: "available",
+  clothing_id: clothing2.id,
+  user_id: user3.id
+)
+
+Rental.create!(
+  status: "rented",
+  clothing_id: clothing2.id,
+  user_id: user4.id
+)
+
+Rental.create!(
+  status: "available",
+  clothing_id: clothing2.id,
+  user_id: user5.id
 )
 
 puts "Seeded database with #{User.count} users, #{Clothing.count} clothings, and #{Rental.count} rentals."
