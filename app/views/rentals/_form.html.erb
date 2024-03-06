@@ -1,20 +1,20 @@
-<!--<div class="container">-->
-  <%#= simple_form_for(rental, wrapper: :vertical_form) do |f| %>
-    <%#= f.error_notification %>
-<!--
+<div class="container">
+  <%= simple_form_for(rental, wrapper: :vertical_form) do |f| %>
+    <%= f.error_notification %>
+
     <div class="form-inputs">
-      <%#= f.input :status, collection: ['Available', 'Unavailable'], prompt: "Select Status" %>-->
-      <%#= f.input :price, input_html: { min: 0 }, prefix: 'R' %>
-      <%#= f.association :clothing, collection: Clothing.all, prompt: "Choose a Clothing" %>
-      <%#= f.association :user, collection: User.all, prompt: "Choose a User" %>
-<!--    </div>
+      <%= f.input :status, collection: ['Available', 'Unavailable'], prompt: "Select Status" %>
+      <%= f.input :price, input_html: { min: 0 }, prefix: 'R' %>
+      <%= f.association :clothing, collection: Clothing.all, prompt: "Choose a Clothing" %>
+      <%= f.association :user, collection: User.all, prompt: "Choose a User" %>
+    </div>
 
     <div class="form-actions">
-      <%#= f.button :submit %>-->
-<!--    </div>-->
-  <%# end %>
-<!--</div>
--->
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>
+
 
 <div class="container">
   <%= simple_form_for(rental, wrapper: :vertical_form) do |f| %>
