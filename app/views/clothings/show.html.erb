@@ -1,0 +1,13 @@
+<h3>Title: <%= @clothing.title %></h3>
+
+<div class="container m-4">
+  <div class="row d-flex justify-content-center">
+    <div class="card my-5">
+      <p>Description: <%= @clothing.description %></p>
+      <p>Price: R<%= @clothing.price %></p>
+      <p>Size: <%= @clothing.size %></p>
+      <button class="btn"><%= link_to "Rental", new_rental_path %></button>
+      <%= link_to "Back to main", clothings_path(@clothings) %>
+    </div>
+  </div>
+</div>
