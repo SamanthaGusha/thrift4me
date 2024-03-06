@@ -23,4 +23,23 @@
       </div>
     </div>
   </div>
+  <p><strong>Clothing:</strong> <%= @clothing.title %></p>
+
+  <%= simple_form_for([@clothing, @rental], wrapper: :vertical_form) do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :clothing_id, value: @clothing.id %>
+
+    <div class="form-inputs">
+      <%= f.input :from, as: :date %>
+      <%= f.input :to, as: :date %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back', clothing_rentals_path(@clothing) %>
 </div>
