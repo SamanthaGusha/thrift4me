@@ -6,7 +6,10 @@
       <p>Description: <%= @clothing.description %></p>
       <p>Price: R<%= @clothing.price %></p>
       <p>Size: <%= @clothing.size %></p>
-      <button class="btn"><%= link_to "Rental", new_rental_path %></button>
+      <% if @clothing.available == false %>
+        <p>This item is unavailable</p>
+      <% end %>
+      <button class="btn"><%= link_to "Rent", new_clothing_rental_path(@clothing) %></button>
       <%= link_to "Back to main", clothings_path(@clothings) %>
     </div>
   </div>

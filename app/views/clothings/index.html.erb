@@ -1,12 +1,15 @@
 <h2>Clothes</h2>
 
+<%#= link_to "Dashboard", user_dashboard_path(@dashboard) %>
 <div class="container m-4">
   <p><% @clothing.each do |clothing| %></p>
   <div class="row d-flex justify-content-center">
     <div class="card my-5">
 <!--      <a href="<%#= clothing.id %>"><%= clothing.title %></a>
 -->
-      <%= "#{clothing.id} #{clothing.title}" %>
+      <p><%= "#{clothing.id} #{clothing.title}" %></p>
+      <p><%= "#{clothing.description}" %></p>
+      <p>R<%=  "#{clothing.price}" %></p>
       <img src="" alt="">
       <button class="btn"><%= link_to "Show Details", clothing_path(clothing) %></button>
     </div>
