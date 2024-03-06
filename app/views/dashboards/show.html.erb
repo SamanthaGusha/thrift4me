@@ -1,20 +1,33 @@
 <div class="container">
   <h1>My Dashboard</h1>
-  <ul>
-    <% if current_user.buyer? %>
-      <% @my_rentals.each do |rental| %>
-        <li><%= rental.title %></li>
-        <li><%= rental.description %></li>
-        <li><%= rental.price %></li>
-        <li><%= rental.size %></li>
-      <% end %>
-    <% elsif current_user.seller? %>
-      <% @my_clothing.each do |clothing| %>
-        <li><%= clothing.title %></li>
-        <li><%= clothing.description %></li>
-        <li><%= clothing.price %></li>
-        <li><%= clothing.size %></li>
-      <% end %>
-    <% end %>
-  </ul>
+
+  <h3>My added clothes</h3> <!--#for the rentee to see the clothes they are renting rn-->
+  <% @my_clothing.each do |clothing| %>
+    <p><%= clothing.title %></p>
+    <p><%= clothing.description %></p>
+  <% end %>
+
+  <h3>My rentals</h3> <!--#for the renter to see which of their clothes are being rented out-->
+  <% @my_rentals.each do |rental| %>
+    <p><%= rental.status %></p>
+  <% end %>
 </div>
+
+
+<!--<div class="container">
+  <h1>My Dashboard</h1>
+  <ul>
+    <%# if current_user.buyer? %>-->
+      <%# @my_rentals.each do |rental| %>
+<!--        <li><%#= rental.status %></li>-->
+      <%# end %>
+    <%# elsif current_user.seller? %>
+      <%# @my_clothing.each do |clothing| %>
+<!--        <li><%#= clothing.title %></li>
+        <li><%#= clothing.description %></li>
+        <li><%#= clothing.price %></li>
+        <li><%#= clothing.size %></li>
+      <%# end %>-->
+    <%# end %>
+<!--  </ul>
+</div>-->

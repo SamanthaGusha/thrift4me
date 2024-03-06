@@ -4,7 +4,6 @@
 
     <div class="form-inputs">
       <%= f.input :status, collection: ['Available', 'Unavailable'], prompt: "Select Status" %>
-      <%= f.input :price, input_html: { min: 0 }, prefix: 'R' %>
       <%= f.association :clothing, collection: Clothing.all, prompt: "Choose a Clothing" %>
       <%= f.association :user, collection: User.all, prompt: "Choose a User" %>
     </div>

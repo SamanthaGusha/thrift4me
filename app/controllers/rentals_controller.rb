@@ -6,10 +6,13 @@ class RentalsController < ApplicationController
   end
 
   def show
+    price = @rental.clothing.price * (@rental.to - @rental.from)
+    @total_price = price.to_i
   end
 
   def new
     @rental = Rental.new
+    @clothing = Clothing.find(params[:clothing_id])
   end
 
   def edit
@@ -17,8 +20,10 @@ class RentalsController < ApplicationController
 
   def create
     @rental = Rental.new(rental_params)
+    @clothing = Clothing.find(params[:clothing_id])
+    @rental.user = current_user
     if @rental.save
-      redirect_to @rental, notice: 'Rental was successfully created.'
+      redirect_to clothing_rental_path(@clothing, @rental)
     else
       render :new
     end
@@ -44,6 +49,6 @@ class RentalsController < ApplicationController
     end
 
     def rental_params
-      params.require(:rental).permit(:status, :price, :clothing_id, :user_id)
+      params.require(:rental).permit(:from, :to, :clothing_id, :user_id)
     end
 end

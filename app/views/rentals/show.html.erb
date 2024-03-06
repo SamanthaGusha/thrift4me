@@ -15,10 +15,9 @@
   </p>
 
   <p>
-    <strong>Price:</strong>
-    <%= number_to_currency(@rental.price) %>
+    <strong>Price:</strong> R<%= @total_price %>
   </p>
 
-  <%= link_to 'Edit', edit_rental_path(@rental) %> |
-  <%= link_to 'Back', rentals_path %>
+  <%#= link_to 'Edit', edit_rental_path(@rental) %> |
+  <%= link_to 'Back', root_path %>
 </div>
