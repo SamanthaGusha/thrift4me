@@ -1,23 +1,25 @@
 <div class="container">
-  <p>
-    <strong>Clothing:</strong>
-    <%= @rental.clothing.title %>
-  </p>
+  <div class="card d-flex align-items-center p-5 mt-5">  <!--added p and mt-->
+    <p>
+      <strong>Clothing:</strong>
+      <%= @rental.clothing.title %>
+    </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= @rental.user.email %>
-  </p>
+    <p>
+      <strong>User:</strong>
+      <%= @rental.user.email %>
+    </p>
 
-  <p>
-    <strong>Status:</strong>
-    <%= @rental.status %>
-  </p>
+    <p>
+      <strong>Status:</strong>
+      <%= @rental.status %>
+    </p>
 
-  <p>
-    <strong>Price:</strong> R<%= @total_price %>
-  </p>
+    <p>
+      <strong>Price:</strong> R<%= @total_price %>
+    </p>
 
-  <%#= link_to 'Edit', edit_rental_path(@rental) %> |
-  <%= link_to 'Back', root_path %>
+    <%#= link_to 'Edit', edit_rental_path(@rental) %>
+    <%= link_to 'Back', root_path, style: "color: grey; text-decoration: none;opacity: 0.5;" %>  <!--added grey link-->
+  </div>
 </div>

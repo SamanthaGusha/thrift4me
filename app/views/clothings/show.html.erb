@@ -1,16 +1,16 @@
-<h3>Title: <%= @clothing.title %></h3>
+<h3 class="mt-4"><strong><%= @clothing.title %></strong></h3> <!--removed "Title" and added mt & strong tags-->
 
 <div class="container m-4">
   <div class="row d-flex justify-content-center">
-    <div class="card my-5">
+    <div class="card my-5 p-5 align-items-center">  <!--added p and align-items-->
       <p>Description: <%= @clothing.description %></p>
       <p>Price: R<%= @clothing.price %></p>
       <p>Size: <%= @clothing.size %></p>
       <% if @clothing.available == false %>
         <p>This item is unavailable</p>
       <% end %>
-      <button class="btn"><%= link_to "Rent", new_clothing_rental_path(@clothing) %></button>
-      <%= link_to "Back to main", clothings_path(@clothings) %>
+      <button class="btn"><%= link_to "Rent", new_clothing_rental_path(@clothing), style: "color: grey; text-decoration: none;opacity: 0.7;" %></button> <!--added grey link-->
     </div>
+    <%= link_to "Back to main", clothings_path(@clothings), style: "color: black; text-decoration: none;" %>  <!--added grey link-->
   </div>
 </div>

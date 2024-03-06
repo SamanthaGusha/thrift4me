@@ -1,12 +1,12 @@
 <div class="container" >
   <h1>Rentals</h1>
 
-  <%= link_to 'New Rental', new_rental_path %>
+  <%= link_to 'New Rental', new_clothing_rental_path %>
 
   <ul>
     <% @rentals.each do |rental| %>
       <li>
-        <%= link_to rental.clothing.title, rental %>
+        <%= link_to rental.clothing.title, clothing_rental_path(rental.clothing, rental) %>
         - <%= rental.status %>
       </li>
     <% end %>
