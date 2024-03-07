@@ -1,64 +1,8 @@
-<!--<div class="container" >
-  <h1>Rentals</h1>
-
-  <%#= link_to 'New Rental', new_rental_path %>-->
-<!--
-  <ul>
-    <%# @rentals.each do |rental| %>-->
-<!--      <li>-->
-        <%#= link_to rental.clothing.title, rental %>
-<!--        - <%#= rental.status %>
-      </li>
-    <%# end %>-->
-<!--  </ul>
-</div>-->
-
-<!--<div class="container mt-4">
-  <div class="row mb-3">
-    <div class="col-md-6">
-      <h1>Rentals</h1>
-    </div>
-    <div class="col-md-6 text-md-right">
-      <%#= link_to 'New Rental', new_rental_path, class: 'btn btn-primary' %>-->
-<!--    </div>
-  </div>
-
-  <%# if @rentals.any? %>-->
-<!--    <div class="table-responsive">
-      <table class="table table-hover">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Clothing Item</th>
-            <th scope="col">Status</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%# @rentals.each do |rental| %>-->
-<!--            <tr>
-              <td><%#= link_to rental.clothing.title, rental %></td>
-              <td><%#= rental.status.capitalize %></td>
-              <td>
-                <%#= link_to 'Details', rental, class: 'btn btn-info btn-sm' %>-->
-                <%#= link_to 'Edit', edit_rental_path(rental), class: 'btn btn-primary btn-sm' %>
-                <%#= link_to 'Delete', rental, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
-<!--              </td>
-            </tr>
-          <%# end %>-->
-<!--        </tbody>
-      </table>
-    </div>
-  <%# else %>-->
-<!--    <p>No rentals found.</p>-->
-  <%# end %>
-<!--</div>-->
-
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>Rentals</h1>
     <%= link_to 'New Rental', new_rental_path, class: 'btn btn-primary' %>
   </div>
-
   <% if @rentals.present? %>
     <!-- Your code for displaying rentals -->
   <% else %>

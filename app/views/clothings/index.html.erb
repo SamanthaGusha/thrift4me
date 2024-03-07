@@ -7,6 +7,12 @@
     <div class="card my-5">
 <!--      <a href="<%#= clothing.id %>"><%= clothing.title %></a>
 -->
+<% if clothing.photo.attached? %>
+  <%= cl_image_tag(clothing.photo.key, width: 400, height: 300, crop: :fill) %>
+<% else %>
+  <%= image_tag("https://replayjeans.co.za/wp-content/uploads/2023/04/AM4318_000_A0460_098_F-1.jpg", width: 400, height: 300, crop: :fill) %>
+<% end %>
+
       <p><%= "#{clothing.id} #{clothing.title}" %></p>
       <p><%= "#{clothing.description}" %></p>
       <p>R<%=  "#{clothing.price}" %></p>
