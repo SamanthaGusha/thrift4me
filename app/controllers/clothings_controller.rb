@@ -2,6 +2,12 @@ class ClothingsController < ApplicationController
 
   def index
     @clothing = Clothing.all
+    @markers = @clothing.geocoded.map do |clothing|
+      {
+        lat: clothing.latitude,
+        lng: clothing.longitude
+      }
+    end
   end
 
   def show
@@ -14,6 +20,12 @@ class ClothingsController < ApplicationController
 
   def create
     @clothing = Clothing.new(clothing_params)
+
+    if @clothing.save
+      redirect_to clothings_path, notice: 'Clothing item was successfully created.'
+    else
+      render :new
+    end
   end
 
   private
