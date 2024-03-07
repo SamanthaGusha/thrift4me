@@ -31,7 +31,8 @@ clothing1 = Clothing.create!(
   description: "A cool, vintage denim jacket from the 90s.",
   price: 50.0,
   size: "M",
-  user_id: user1.id
+  user_id: user1.id,
+  address: "London"
 )
 clothing1.photo.attach(io: image_1, filename: 'nes.png', content_type: "image/png")
 clothing1.save
@@ -42,7 +43,9 @@ clothing2 = Clothing.create!(
   description: "Beautiful retro dress with floral pattern. Perfect for any vintage lover!",
   price: 35.0,
   size: "S",
-  user_id: user2.id
+  user_id: user2.id,
+  address: "London"
+
 )
 clothing2.photo.attach(io: image_2, filename: 'nes.png', content_type: "image/png")
 clothing2.save
@@ -53,7 +56,8 @@ clothing3 = Clothing.create!(
   description: "Classic leather biker jacket for a rugged look.",
   price: 80.0,
   size: "L",
-  user_id: user3.id
+  user_id: user3.id,
+  address: "London"
 )
 
 clothing3.photo.attach(io: image_3, filename: 'nes.png', content_type: "image/png")
@@ -65,9 +69,9 @@ clothing4 = Clothing.create!(
   description: "Casual striped t-shirt for everyday wear.",
   price: 20.0,
   size: "XL",
-  user_id: user4.id
+  user_id: user4.id,
+  address: "London"
 )
-
 clothing4.photo.attach(io: image_4, filename: 'nes.png', content_type: "image/png")
 clothing4.save
 
@@ -77,7 +81,8 @@ clothing5 = Clothing.create!(
   description: "Perfectly baggy denim jeans",
   price: 60.0,
   size: "M",
-  user_id: user5.id
+  user_id: user5.id,
+  address: "London"
 )
 
 clothing5.photo.attach(io: image_5, filename: 'nes.png', content_type: "image/png")

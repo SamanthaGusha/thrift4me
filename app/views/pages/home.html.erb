@@ -5,6 +5,11 @@
   <p><% @clothings.each do |clothing| %></p>
   <div class="row d-flex justify-content-center">
     <div class="card my-5 text-center "> <!--added text center-->
+      <% if clothing.photo.attached? %>
+        <%= cl_image_tag(clothing.photo.key, width: 400, height: 300, crop: :fill) %>
+      <% else %>
+        <%= image_tag("https://replayjeans.co.za/wp-content/uploads/2023/04/AM4318_000_A0460_098_F-1.jpg", width: 400, height: 300, crop: :fill) %>
+      <% end %>
       <p><%= "#{clothing.id}" %> <strong><%= "#{clothing.title}" %></strong></p> <!--added title bold-->
       <p><%= "#{clothing.description}" %></p>
       <p>R<%=  "#{clothing.price}" %></p>
