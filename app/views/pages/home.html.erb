@@ -1,3 +1,22 @@
-<h1>Welcome to Thrift4Me 👀</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "Rentals", rentals_path %>
+<h1>Welcome to Thrift4Me</h1>
+<h2>Clothes</h2>
+<%#= link_to "Dashboard", user_dashboard_path(@dashboard) %>
+<div class="container m-4">
+  <p><% @clothings.each do |clothing| %></p>
+  <div class="row d-flex justify-content-center">
+    <div class="card my-5 text-center "> <!--added text center-->
+      <p><%= "#{clothing.id}" %> <strong><%= "#{clothing.title}" %></strong></p> <!--added title bold-->
+      <p><%= "#{clothing.description}" %></p>
+      <p>R<%=  "#{clothing.price}" %></p>
+      <img src="" alt="">  <!--add cl_img-->
+      <% if user_signed_in? %>
+        <button class="btn"> <!--added grey link-->
+        <%= link_to "Show Details", clothing_path(clothing), style: "color: grey; text-decoration: none;opacity: 0.7;" %>
+        </button>
+      <% else %>
+        <%= link_to "Show Details", user_session_path, style: "color: grey; text-decoration: none;opacity: 0.7;" %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
