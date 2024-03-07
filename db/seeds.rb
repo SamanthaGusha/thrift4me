@@ -17,11 +17,11 @@ User.destroy_all
 
 # Users
 puts "Creating users"
-user1 = User.create!(email: "user1@thrift.com", password: "password")
-user2 = User.create!(email: "user2@thrift.com", password: "password")
-user3 = User.create!(email: "user3@thrift.com", password: "password")
-user4 = User.create!(email: "user4@thrift.com", password: "password")
-user5 = User.create!(email: "finn@thrift.com", password: "password")
+user1 = User.create!(email: "user1@thrift.com", password: "password", first_name: "John", last_name: "Doe", address: "Buitengracht St")
+user2 = User.create!(email: "user2@thrift.com", password: "password", first_name: "Jane", last_name: "Smith", address: "Bree St")
+user3 = User.create!(email: "user3@thrift.com", password: "password", first_name: "Alice", last_name: "Johnson", address: "Bay Rd")
+user4 = User.create!(email: "user4@thrift.com", password: "password", first_name: "Bob", last_name: "Williams", address: "Totnes Ave")
+user5 = User.create!(email: "user5@thrift.com", password: "password", first_name: "Rue", last_name: "Brown", address: "Cramond Rd")
 puts "#{User.count} users created"
 
 # Clothings
@@ -32,7 +32,7 @@ clothing1 = Clothing.create!(
   price: 50.0,
   size: "M",
   user_id: user1.id,
-  address: "London"
+  address: "Buitengracht St"
 )
 clothing1.photo.attach(io: image_1, filename: 'nes.png', content_type: "image/png")
 clothing1.save
@@ -44,7 +44,7 @@ clothing2 = Clothing.create!(
   price: 35.0,
   size: "S",
   user_id: user2.id,
-  address: "London"
+  address: "Bree St"
 
 )
 clothing2.photo.attach(io: image_2, filename: 'nes.png', content_type: "image/png")
@@ -57,7 +57,7 @@ clothing3 = Clothing.create!(
   price: 80.0,
   size: "L",
   user_id: user3.id,
-  address: "London"
+  address: "Bay Rd"
 )
 
 clothing3.photo.attach(io: image_3, filename: 'nes.png', content_type: "image/png")
@@ -70,7 +70,7 @@ clothing4 = Clothing.create!(
   price: 20.0,
   size: "XL",
   user_id: user4.id,
-  address: "London"
+  address: "Totness Ave"
 )
 clothing4.photo.attach(io: image_4, filename: 'nes.png', content_type: "image/png")
 clothing4.save
@@ -82,7 +82,7 @@ clothing5 = Clothing.create!(
   price: 60.0,
   size: "M",
   user_id: user5.id,
-  address: "London"
+  address: "Cramond Rd"
 )
 
 clothing5.photo.attach(io: image_5, filename: 'nes.png', content_type: "image/png")
@@ -91,31 +91,41 @@ clothing5.save
 # Rentals
 Rental.create!(
   status: "available",
+  from: Date.today,
+  to: Date.today + 7.days,
   clothing_id: clothing1.id,
   user_id: user1.id
 )
 
 Rental.create!(
   status: "rented",
+  from: Date.today,
+  to: Date.today + 2.days,
   clothing_id: clothing2.id,
   user_id: user2.id
 )
 
 Rental.create!(
   status: "available",
-  clothing_id: clothing2.id,
+  from: Date.today,
+  to: Date.today + 5.days,
+  clothing_id: clothing3.id,
   user_id: user3.id
 )
 
 Rental.create!(
   status: "rented",
-  clothing_id: clothing2.id,
+  from: Date.today,
+  to: Date.today + 10.days,
+  clothing_id: clothing4.id,
   user_id: user4.id
 )
 
 Rental.create!(
   status: "available",
-  clothing_id: clothing2.id,
+  from: Date.today,
+  to: Date.today + 3.days,
+  clothing_id: clothing5.id,
   user_id: user5.id
 )
 

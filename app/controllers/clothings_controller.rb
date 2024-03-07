@@ -1,13 +1,16 @@
 class ClothingsController < ApplicationController
-
   def index
     @clothing = Clothing.all
+    if params[:query].present?
+      @clothings = Clothing.search_by_title_and_description(params[:query])
+    else
+      @clothings = Clothing.all
+    end
     @markers = @clothing.geocoded.map do |clothing|
       {
         lat: clothing.latitude,
         lng: clothing.longitude
       }
-    end
   end
 
   def show
