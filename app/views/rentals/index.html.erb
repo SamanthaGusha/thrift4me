@@ -1,11 +1,12 @@
-<div class="container mt-5">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1>Rentals</h1>
-    <%= link_to 'New Rental', new_rental_path, class: 'btn btn-primary' %>
-  </div>
-  <% if @rentals.present? %>
-    <!-- Your code for displaying rentals -->
-  <% else %>
-    <p>No rentals found.</p>
-  <% end %>
+<div class="container" >
+  <h1>Rentals</h1>
+  <%= link_to 'New Rental', new_clothing_rental_path %>
+  <ul>
+    <% @rentals.each do |rental| %>
+      <li>
+        <%= link_to rental.clothing.title, clothing_rental_path(rental.clothing, rental) %>
+        - <%= rental.status %>
+      </li>
+    <% end %>
+  </ul>
 </div>
