@@ -1,29 +1,7 @@
-<!--<div class="container new-rental-container">
-  <div>
-    <h1>New Rental</h1>
+<div class="container mt-5">  <!--added mt-->
+  <h1>Rent item</h1> <!--changed "new rental" to "rent item"-->
 
-    <%#= render 'form', rental: @rental %>-->
-<!---->
-    <%#= link_to 'Back to dashboard', users_path, class: 'btn btn-light' %>
-<!--  </div>
-</div>
--->
-
-<div class="container mt-5">
-  <div class="card">
-    <div class="card-body">
-      <h1 class="card-title text-center">New Rental</h1>
-
-      <!-- The form partial will be rendered here with Bootstrap styling included within the form itself -->
-      <%= render 'form', rental: @rental %>
-
-      <div class="text-center mt-4">
-        <%= link_to 'Back to dashboard', users_path, class: 'btn btn-primary' %>
-        <%= link_to 'Back to rentals', rentals_path, class: 'btn btn-primary' %>
-      </div>
-    </div>
-  </div>
-  <p><strong>Clothing:</strong> <%= @clothing.title %></p>
+  <p><strong> <%= @clothing.title %></strong></p>
 
   <%= simple_form_for([@clothing, @rental], wrapper: :vertical_form) do |f| %>
     <%= f.error_notification %>
@@ -41,5 +19,5 @@
     </div>
   <% end %>
 
-  <%= link_to 'Back', clothing_rentals_path(@clothing) %>
+  <%#= link_to 'Back', clothing_rentals_path(@clothing) %>   <!--not necessary since home in navbar works-->
 </div>

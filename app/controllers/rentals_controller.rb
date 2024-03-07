@@ -23,7 +23,7 @@ class RentalsController < ApplicationController
     @clothing = Clothing.find(params[:clothing_id])
     @rental.user = current_user
     if @rental.save
-      redirect_to clothing_rental_path(@clothing, @rental)
+      redirect_to clothing_rental_path(@clothing, @rental), notice: 'Rental was successfully requested'
     else
       render :new
     end
