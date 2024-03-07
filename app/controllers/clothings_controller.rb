@@ -1,7 +1,11 @@
 class ClothingsController < ApplicationController
-
   def index
     @clothing = Clothing.all
+    if params[:query].present?
+      @clothings = Clothing.search_by_title_and_description(params[:query])
+    else
+      @clothings = Clothing.all
+    end
   end
 
   def show
