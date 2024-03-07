@@ -22,6 +22,7 @@ class RentalsController < ApplicationController
     @rental = Rental.new(rental_params)
     @clothing = Clothing.find(params[:clothing_id])
     @rental.user = current_user
+    @rental.status = 'pending'
     if @rental.save
       redirect_to clothing_rental_path(@clothing, @rental), notice: 'Rental was successfully requested'
     else
@@ -49,6 +50,6 @@ class RentalsController < ApplicationController
     end
 
     def rental_params
-      params.require(:rental).permit(:from, :to, :clothing_id, :user_id)
+      params.require(:rental).permit(:from, :to, :clothing_id, :user_id, :status)
     end
 end

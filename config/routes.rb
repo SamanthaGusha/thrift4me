@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :users do
-    resources :dashboards, only: [:show]
+    resources :dashboards do
+      get :rentee, on: :member
+      get :renter, on: :member
+    end
   end
   resources :clothings do
     resources :rentals

@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>My Dashboard</h1>
+
+  <h3>My Rentals</h3> <!--#for the rentee to see the clothes they are renting rn-->
+  <!-- Rentee dashboard content-->
+  <% unless current_user.renter %>
+    <% @active_rentals.each do |clothing| %>
+      <p><%= clothing.title %></p>
+      <p><%= clothing.description %></p>
+      <p><%= clothing.rental.user_id %></p>
+    <% end%>
+  <% end %>
+
+  <!-- Renter dashboard content-->
+
+<!--#for the renter to see which of their clothes are being rented out-->
+<h3>My Rented Items</h3>
+  <% if @pending_rentals %>
+    <% @pending_rentals.each do |rental| %>
+      <p><%= rental.clothing.title %><p>
+      <%= link_to "accept", notice: "Rental status updated!" %>
+    <% end %>
+  <% end %>
+  <%# @active_rentals.each do |rental| %>
+<!--    <div>
+      <p>Clothing Name: <%#= rental.clothing.title %></p>
+      <p>Status: <%#= rental.status %></p>
+    </div>
+  <%# end %>-->
+<!--</div>-->
+</div>

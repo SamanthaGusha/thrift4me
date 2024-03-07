@@ -16,11 +16,11 @@ User.destroy_all
 
 # Users
 puts "Creating users"
-user1 = User.create!(email: "user1@thrift.com", password: "password")
-user2 = User.create!(email: "user2@thrift.com", password: "password")
-user3 = User.create!(email: "user3@thrift.com", password: "password")
-user4 = User.create!(email: "user4@thrift.com", password: "password")
-user5 = User.create!(email: "user5@thrift.com", password: "password")
+user1 = User.create!(email: "user1@thrift.com", password: "password", renter: true)
+user2 = User.create!(email: "user2@thrift.com", password: "password", renter: true)
+user3 = User.create!(email: "user3@thrift.com", password: "password", renter: true)
+user4 = User.create!(email: "user4@thrift.com", password: "password", renter: false)
+user5 = User.create!(email: "user5@thrift.com", password: "password", renter: false)
 puts "#{User.count} users created"
 
 # Clothings
@@ -66,32 +66,32 @@ clothing5 = Clothing.create!(
 
 # Rentals
 Rental.create!(
-  status: "available",
+  status: "pending",
   clothing_id: clothing1.id,
   user_id: user1.id
 )
 
 Rental.create!(
-  status: "rented",
+  status: "approved",
   clothing_id: clothing2.id,
   user_id: user2.id
 )
 
 Rental.create!(
-  status: "available",
-  clothing_id: clothing2.id,
+  status: "pending",
+  clothing_id: clothing3.id,
   user_id: user3.id
 )
 
 Rental.create!(
-  status: "rented",
-  clothing_id: clothing2.id,
+  status: "pending",
+  clothing_id: clothing4.id,
   user_id: user4.id
 )
 
 Rental.create!(
-  status: "available",
-  clothing_id: clothing2.id,
+  status: "pending",
+  clothing_id: clothing5.id,
   user_id: user5.id
 )
 
