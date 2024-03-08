@@ -11,6 +11,7 @@ class ClothingsController < ApplicationController
         lat: clothing.latitude,
         lng: clothing.longitude
       }
+    end
   end
 
   def show

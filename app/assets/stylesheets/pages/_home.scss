@@ -1,1 +1,11 @@
 // Specific CSS for your home-page
+
+.container {
+  font-family: poppins;
+  align-items: center;
+}
+
+.clothing-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
