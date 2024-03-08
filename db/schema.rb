@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_100621) do
   end
 
   create_table "rentals", force: :cascade do |t|
-    t.integer "status", default: 0
+    t.string "status"
     t.bigint "clothing_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
