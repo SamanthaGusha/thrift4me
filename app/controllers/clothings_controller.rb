@@ -6,7 +6,12 @@ class ClothingsController < ApplicationController
     else
       @clothings = Clothing.all
     end
-
+    @markers = @clothing.geocoded.map do |clothing|
+      {
+        lat: clothing.latitude,
+        lng: clothing.longitude
+      }
+    end
   end
 
   def show
