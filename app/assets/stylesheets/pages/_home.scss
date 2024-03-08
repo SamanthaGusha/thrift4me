@@ -1,1 +1,69 @@
 // Specific CSS for your home-page
+
+.container {
+  font-family: poppins;
+  align-items: center;
+
+  .top-img {
+    position: absolute;
+    width: 1296px;
+    height: 100%;
+    opacity: 0.9;
+    border-radius: 10px;
+
+    .overlay {
+    position: absolute; // Position the overlay absolutely within the card
+    top: 0;
+    left: 0;
+    width: 100%; // Ensure the overlay takes up the entire width of the card
+    height: 100%; // Ensure the overlay takes up the entire height of the card
+    background-color: black; // Set the color of the overlay
+    opacity: 0.5; // Set the opacity of the overlay to create transparency
+    z-index: -1;
+    }
+  }
+
+  .welcome {
+    padding: 200px;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .clothing-cards {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 120px;
+  }
+
+  // .div-1 {
+  //   background-color: blue;
+  // }
+
+  .div-2 {
+    // background-color: brown;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  .img-div {
+    height: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .img-fluid {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .img-min-height {
+    min-height: 180px;
+  }
+
+  .text-div {
+    // background-color: aqua;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}

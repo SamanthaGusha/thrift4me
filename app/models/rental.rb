@@ -7,4 +7,5 @@ class Rental < ApplicationRecord
   def self.pending?
     status == "pending"
   end
+
 end

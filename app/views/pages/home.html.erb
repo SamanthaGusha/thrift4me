@@ -1,22 +1,55 @@
-<h1>Welcome to Thrift4Me</h1>
-<h2>Clothes</h2>
-<%#= link_to "Dashboard", user_dashboard_path(@dashboard) %>
-<div class="container m-4">
-  <p><% @clothings.each do |clothing| %></p>
-  <div class="row d-flex justify-content-center">
-    <div class="card my-5 text-center "> <!--added text center-->
-      <p><%= "#{clothing.id}" %> <strong><%= "#{clothing.title}" %></strong></p> <!--added title bold-->
-      <p><%= "#{clothing.description}" %></p>
-      <p>R<%=  "#{clothing.price}" %></p>
-      <img src="" alt="">  <!--add cl_img-->
-      <% if user_signed_in? %>
-        <button class="btn"> <!--added grey link-->
-        <%= link_to "Show Details", clothing_path(clothing), style: "color: grey; text-decoration: none;opacity: 0.7;" %>
-        </button>
-      <% else %>
-        <%= link_to "Show Details", user_session_path, style: "color: grey; text-decoration: none;opacity: 0.7;" %>
-      <% end %>
+<div class="container mt-5">
+  <div class="welcome card d-flex align-items-center justify-content-center">
+    <%= image_tag("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fHw%3D", class: "top-img img-fluid") %>
+    <div class="overlay"></div>
+    <h1>Welcome to Thrift4Me</h1>
+    <p class="mb-4 mt-2">Spice up your style</p>
+
+    <div class="row justify-content-center">
+      <div class="my-3">
+        <%= form_tag root_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Type a keyword"
+            %>
+          <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <% end %>
+
+  <%#= link_to "Dashboard", user_dashboard_path(@dashboard) %>
+
+  <div class="clothing-cards">
+    <p><% @clothings.each do |clothing| %></p>
+    <div class="div-1 row d-flex justify-content-center p-4" id="clothing-card">
+      <div class="div-2 card my-5 text-center p-4" style="max-width: 250px;"> <!--added text center--> <!-- p-2-->
+
+        <div class="img-div">
+          <% if clothing.photo.attached? %>
+            <%= cl_image_tag(clothing.photo.key, class: "img-fluid") %>
+          <% else %>
+            <%= image_tag("https://replayjeans.co.za/wp-content/uploads/2023/04/AM4318_000_A0460_098_F-1.jpg", class: "img-fluid img-min-height") %>
+        <% end %>
+        </div>
+
+        <div class="text-div">
+          <p class="mt-4"><strong><%= "#{clothing.title}" %></strong></p> <!--added title bold-->
+          <p><%= "#{clothing.description}" %></p>
+          <p>R<%= "#{clothing.price}" %> per day</p>
+          <img src="" alt="">  <!--add cl_img-->
+          <% if user_signed_in? %>
+            <button class="btn"> <!--added grey link-->
+              <%= link_to "Show Details", clothing_path(clothing), style: "color: grey; text-decoration: none;opacity: 0.7;" %>
+            </button>
+          <% else %>
+            <%= link_to "Show Details", user_session_path, style: "color: grey; text-decoration: none;opacity: 0.7;" %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
