@@ -16,11 +16,11 @@ User.destroy_all
 # Users
 puts "Creating users"
 
-user1 = User.create!(email: "user1@thrift.com", password: "password", first_name: "John", last_name: "Doe", address: "Buitengracht St", renter: true)
-user2 = User.create!(email: "user2@thrift.com", password: "password", first_name: "Jane", last_name: "Smith", address: "Bree St", renter: true)
-user3 = User.create!(email: "user3@thrift.com", password: "password", first_name: "Alice", last_name: "Johnson", address: "Bay Rd", renter: true)
-user4 = User.create!(email: "user4@thrift.com", password: "password", first_name: "Bob", last_name: "Williams", address: "Totnes Ave", renter: false)
-user5 = User.create!(email: "user5@thrift.com", password: "password", first_name: "Rue", last_name: "Brown", address: "Cramond Rd", renter: false)
+user1 = User.create!(email: "user1@thrift.com", password: "password", first_name: "John", last_name: "Doe", address: "Buitengracht St")
+user2 = User.create!(email: "user2@thrift.com", password: "password", first_name: "Jane", last_name: "Smith", address: "Bree St")
+user3 = User.create!(email: "user3@thrift.com", password: "password", first_name: "Alice", last_name: "Johnson", address: "Bay Rd")
+user4 = User.create!(email: "user4@thrift.com", password: "password", first_name: "Bob", last_name: "Williams", address: "Totnes Ave")
+user5 = User.create!(email: "user5@thrift.com", password: "password", first_name: "Rue", last_name: "Brown", address: "Cramond Rd")
 
 puts "#{User.count} users created"
 # Clothings
