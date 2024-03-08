@@ -10,24 +10,22 @@
     height: 100%;
     opacity: 0.9;
     border-radius: 10px;
-
-    .overlay {
-    position: absolute; // Position the overlay absolutely within the card
-    top: 0;
-    left: 0;
-    width: 100%; // Ensure the overlay takes up the entire width of the card
-    height: 100%; // Ensure the overlay takes up the entire height of the card
-    background-color: black; // Set the color of the overlay
-    opacity: 0.5; // Set the opacity of the overlay to create transparency
-    z-index: -1;
-    }
   }
 
   .welcome {
-    padding: 200px;
+    padding: 100px;
     border-radius: 10px;
     position: relative;
+    background-color: rgb(27, 108, 108);
+    font: bold;
+    font-size: 20px;
   }
+
+   .btn {
+    background-color: rgb(219, 110, 88);
+    border-color: rgb(219, 110, 88);
+  }
+
 
   .clothing-cards {
     display: flex;
@@ -65,5 +63,10 @@
     // background-color: aqua;
     border-radius: 10px;
     overflow: hidden;
+  }
+
+  .btn {
+    background-color: rgb(219, 110, 88);
+    border-color: rgb(219, 110, 88);
   }
 }
