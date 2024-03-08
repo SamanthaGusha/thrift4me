@@ -1,15 +1,15 @@
 class DashboardsController < ApplicationController
 
   def renter
-    @rental_requests = current_user.rentals.includes(:clothing)
-
+    # @rental_requests = current_user.rentals.includes(:clothing)
+    @clothings = Clothing.where(user_id: current_user.id)
 
     # @rental_requests = @rental_requests.where(user_id: current_user)
     @past_rentals = current_user.past_rentals
   end
 
   def rentee
-    @rental_requests = current_user.rentals.includes(:clothing)
+    @rental_requests = Rental.where(user_id: current_user.id).includes(:clothing)
 
     # @rental_requests = @rental_requests.where(user_id: current_user)
     @past_rentals = current_user.past_rentals

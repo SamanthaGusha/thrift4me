@@ -47,14 +47,15 @@ class RentalsController < ApplicationController
 
   def accept
     @rental = Rental.find(params[:id])
-    @rental.update(status: 'accepted')
-    redirect_to renter_dashboard_path, notice: 'Rental accepted successfully.'
+    @rental.update(status: 1)
+    redirect_to dashboard_renter_path, notice: 'Rental accepted successfully.'
+
   end
 
   def reject
     @rental = Rental.find(params[:id])
-    @rental.update(status: 'rejected')
-    redirect_to renter_dashboard_path, notice: 'Rental rejected successfully.'
+    @rental.update(status: 2)
+    redirect_to dashboard_renter_path, notice: 'Rental rejected successfully.'
   end
 
   def destroy

@@ -14,7 +14,10 @@
       <% if @clothing.available == false %>
         <p>This item is unavailable</p>
       <% end %>
-      <button class="btn btn-success mt-4"><%= link_to "Request to rent", new_clothing_rental_path(@clothing), style: "color: white; text-decoration: none;" %></button> <!--added grey link-->
+
+      <% unless @clothing.user == current_user %>
+      <button class="btn"><%= link_to "Request to rent", new_clothing_rental_path(@clothing), style: "color: white; text-decoration: none;" %></button> <!--added grey link-->
+      <% end %>
     </div>
     <%= link_to "Back to main", clothings_path(@clothings), style: "color: grey; text-decoration: none;" %>  <!--added grey link-->
   </div>
