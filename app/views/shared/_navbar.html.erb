@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 <!--<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%#= link_to "#", class: "navbar-brand" do %>-->
@@ -119,9 +118,9 @@
       <ul class="navbar-nav ms-auto"> <!-- Updated class here -->
         <% if user_signed_in? %>
           <%= link_to "Home", root_path, class: "nav-item nav-link active" %>
-          <%= link_to "Rent your clothes out", new_clothing_path, class: "nav-item nav-link" %>
-          <%= link_to "Your Clothes", dashboard_rentee_path, class: "nav-item nav-link" %>
-          <%= link_to "Your Rentals", dashboard_renter_path, class: "nav-item nav-link" %>
+          <%= link_to "Add Your Clothes", new_clothing_path, class: "nav-item nav-link" %>
+          <%= link_to "Manage Your Clothes", dashboard_rentee_path, class: "nav-item nav-link" %>
+          <%= link_to "View Your Rentals", dashboard_renter_path, class: "nav-item nav-link" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
         <% else %>
           <%= link_to "Login", new_user_session_path, class: "nav-item nav-link" %>
