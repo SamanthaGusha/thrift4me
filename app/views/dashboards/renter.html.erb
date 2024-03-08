@@ -1,7 +1,7 @@
 <h1>Renter dashboard</h1>
 <h2>My Rentals</h2>
 
-  <% if @rental_requests.any? %>
+  <% if @clothings.any? %>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -12,22 +12,24 @@
         </tr>
       </thead>
       <tbody>
-        <% @rental_requests.each do |request| %>
+        <% @clothings.each do |clothing| %>
+        <% clothing.rentals.each do |request| %>
           <tr>
             <td><%= request.clothing.title %></td>
-            <td><%= request.user_id %></td>
+            <td><%= request.user.email %></td>
             <td><%= request.status %></td>
             <td>
               <% if request.pending? %>
-                <%= button_to "Accept", rental_approval_path(id: request.id, action: 'accept'), method: :post, class: "btn btn-success btn-sm", data: { remote: true } %>
+                <%= button_to "Accept", rental_approval_path(request), class: "btn btn-success btn-sm" %>
               <% end %>
             </td>
             <td>
               <% if request.pending? %>
-                <%= button_to "Reject", rental_rejection_path(id: request.id, action: 'reject'), method: :post, class: "btn btn-danger btn-sm", data: { remote: true } %>
+                <%= button_to "Reject", rental_rejection_path(request), class: "btn btn-danger btn-sm" %>
               <% end %>
             </td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>

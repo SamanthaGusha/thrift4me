@@ -1,6 +1,7 @@
 <h1>rentee dashboard</h1>
-
+<%= current_user.id %>
 <% if @rental_requests.any? %>
+
   <table class="table table-hover">
     <thead>
       <tr>
@@ -11,14 +12,14 @@
     </thead>
     <tbody>
       <% @rental_requests.each do |request| %>
-        <% if request == 'accept' %>
+        <%# if request == 'accept' %>
           <tr>
             <td><%= request.clothing.title %></td>
-            <td><%= request.current_user.email %></td>
-<!--              <td><%#= "#{request.rental_start_date} - #{request.rental_end_date}" %></td>
+            <td><%= request.user.email %></td>
+            <td><%= "#{request.from} - #{request.to}" %></td>
 -->        </tr>
           <% end %>
-        <% end %>
+        <%# end %>
     </tbody>
   </table>
   <% else %>
