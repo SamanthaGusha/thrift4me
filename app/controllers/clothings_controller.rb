@@ -16,6 +16,18 @@ class ClothingsController < ApplicationController
 
   def show
     @clothing = Clothing.find(params[:id])
+
+    @markers = []
+
+    if @clothing.geocoded?
+      @marker = {
+        lat: @clothing.latitude,
+        lng: @clothing.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {clothing: @clothing }),
+        marker_html: render_to_string(partial: "marker", locals: {clothing: @clothing })
+      }
+      @markers << @marker
+    end
   end
 
   def new
@@ -24,7 +36,6 @@ class ClothingsController < ApplicationController
 
   def create
     @clothing = Clothing.new(clothing_params)
-
     if @clothing.save
       redirect_to clothings_path, notice: 'Clothing item was successfully created.'
     else
@@ -35,6 +46,6 @@ class ClothingsController < ApplicationController
   private
 
   def clothing_params
-    params.require(:clothing).permit(:title, :description, :price, :size, :user_id, :body, :photo)
+    params.require(:clothing).permit(:title, :description, :price, :size, :user_id, :body, :photo, :address, :available)
   end
 end
