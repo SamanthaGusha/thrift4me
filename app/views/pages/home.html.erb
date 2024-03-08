@@ -1,7 +1,6 @@
 <div class="container mt-5">
   <div class="welcome card d-flex align-items-center justify-content-center">
-    <%= image_tag("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fHw%3D", class: "top-img img-fluid") %>
-    <div class="overlay"></div>
+    <%#= image_tag("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fHw%3D", class: "top-img img-fluid") %>
     <h1>Welcome to Thrift4Me</h1>
     <p class="mb-4 mt-2">Spice up your style</p>
 
@@ -41,7 +40,7 @@
           <img src="" alt="">  <!--add cl_img-->
           <% if user_signed_in? %>
             <button class="btn"> <!--added grey link-->
-              <%= link_to "Show Details", clothing_path(clothing), style: "color: grey; text-decoration: none;opacity: 0.7;" %>
+              <%= link_to "Show Details", clothing_path(clothing), style: "color: white; text-decoration: none;opacity: 0.7;" %>
             </button>
           <% else %>
             <%= link_to "Show Details", user_session_path, style: "color: grey; text-decoration: none;opacity: 0.7;" %>
