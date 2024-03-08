@@ -31,11 +31,30 @@ class RentalsController < ApplicationController
   end
 
   def update
-    if @rental.update(rental_params)
-      redirect_to @rental, notice: 'Rental was successfully updated.'
+    @rental = Rental.find(params[:id])
+    if params[:action] == "accept"
+      @rental.update!(status: :accepted)
+      @rental.clothing_item.update!(available: false) # Mark clothing unavailable
+      redirect_to rental_approval_path, notice: "Rental accepted!"
+    elsif params[:action] == "reject"
+      @rental.update!(status: :rejected)
+      redirect_to rental_rejection_path, notice: "Rental rejected."
     else
-      render :edit
+      redirect_to dashboard_rentee_path, alert: "Invalid action."
     end
+
+  end
+
+  def accept
+    @rental = Rental.find(params[:id])
+    @rental.update(status: 'accepted')
+    redirect_to renter_dashboard_path, notice: 'Rental accepted successfully.'
+  end
+
+  def reject
+    @rental = Rental.find(params[:id])
+    @rental.update(status: 'rejected')
+    redirect_to renter_dashboard_path, notice: 'Rental rejected successfully.'
   end
 
   def destroy
@@ -45,11 +64,11 @@ class RentalsController < ApplicationController
 
   private
 
-    def set_rental
-      @rental = Rental.find(params[:id])
-    end
+  def set_rental
+    @rental = Rental.find(params[:id])
+  end
 
-    def rental_params
-      params.require(:rental).permit(:from, :to, :clothing_id, :user_id, :status)
-    end
+  def rental_params
+    params.require(:rental).permit(:from, :to, :clothing_id, :user_id, :status)
+  end
 end

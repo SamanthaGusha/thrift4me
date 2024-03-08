@@ -10,4 +10,9 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def past_rentals
+    self.rentals.where('rentals.from < ?', Date.today).includes(:clothing)
+  end
+
 end
