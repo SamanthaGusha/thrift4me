@@ -42,6 +42,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_100621) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "bids", force: :cascade do |t|
+    t.float "bid_price"
+    t.string "status"
+    t.bigint "clothing_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clothing_id"], name: "index_bids_on_clothing_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
+  end
+
   create_table "clothings", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -77,6 +88,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_100621) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "seller", default: false
+    t.boolean "buyer", default: true
     t.string "first_name"
     t.string "last_name"
     t.string "address"
@@ -86,6 +99,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_100621) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bids", "clothings"
+  add_foreign_key "bids", "users"
   add_foreign_key "clothings", "users"
   add_foreign_key "rentals", "clothings"
   add_foreign_key "rentals", "users"

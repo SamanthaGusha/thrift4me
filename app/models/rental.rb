@@ -10,4 +10,3 @@ class Rental < ApplicationRecord
 
 end
 
-# sam is to do the seed file

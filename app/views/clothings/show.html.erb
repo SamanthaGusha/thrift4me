@@ -14,7 +14,7 @@
       <% if @clothing.available == false %>
         <p>This item is unavailable</p>
       <% end %>
-      <button class="btn"><%= link_to "Rent", new_clothing_rental_path(@clothing), style: "color: grey; text-decoration: none;opacity: 0.7;" %></button> <!--added grey link-->
+      <button class="btn btn-success"><%= link_to "Rent", new_clothing_rental_path(@clothing) %></button> <!--added grey link-->
     </div>
     <%= link_to "Back to main", clothings_path(@clothings), style: "color: black; text-decoration: none;" %>  <!--added grey link-->
   </div>
