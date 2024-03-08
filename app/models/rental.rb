@@ -7,4 +7,7 @@ class Rental < ApplicationRecord
   def self.pending?
     status == "pending"
   end
+
 end
+
+# sam is to do the seed file

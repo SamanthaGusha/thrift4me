@@ -5,6 +5,7 @@
     <%= f.error_notification %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :clothing_id, value: @clothing.id %>
+    <%= f.hidden_field :status, value: "pending" %>
     <div class="form-inputs">
       <%= f.input :from, as: :date %>
       <%= f.input :to, as: :date %>

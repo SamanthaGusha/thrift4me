@@ -1,17 +1,45 @@
+<h1>Welcome to Thrift4Me</h1>
 <h2>Clothes</h2>
+
+<div class="row justify-content-center">
+  <div class="col-sm-6 my-3">
+    <%= form_tag root_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
 <%#= link_to "Dashboard", user_dashboard_path(@dashboard) %>
 <div class="container m-4">
-  <p><% @clothing.each do |clothing| %></p>
+  <p><% @clothings.each do |clothing| %></p>
   <div class="row d-flex justify-content-center">
     <div class="card my-5 text-center "> <!--added text center-->
-<!--      <a href="<%#= clothing.id %>"><%= clothing.title %></a>
--->
+      
+      <!--      <a href="<%#= clothing.id %>"><%= clothing.title %></a>
+    -->
+      <% if clothing.photo.attached? %>
+        <%= cl_image_tag(clothing.photo.key, width: 400, height: 300, crop: :fill) %>
+      <% else %>
+        <%= image_tag("https://replayjeans.co.za/wp-content/uploads/2023/04/AM4318_000_A0460_098_F-1.jpg", width: 400, height: 300, crop: :fill) %>
+      <% end %>
+      
       <p><%= "#{clothing.id}" %> <strong><%= "#{clothing.title}" %></strong></p> <!--added title bold-->
       <p><%= "#{clothing.description}" %></p>
       <p>R<%=  "#{clothing.price}" %></p>
-      <img src="" alt="">
-      <button class="btn"><%= link_to "Show Details", clothing_path(clothing), style: "color: grey; text-decoration: none;opacity: 0.7;" %></button> <!--added grey link-->
+      <p>I am located at: <%= clothing.latitude + clothing.longitude %>
+      <img src="" alt="">  <!--add cl_img-->
+      <% if user_signed_in? %>
+        <button class="btn"> <!--added grey link-->
+        <%= link_to "Show Details", clothing_path(clothing), style: "color: grey; text-decoration: none;opacity: 0.7;" %>
+        </button>
+      <% else %>
+        <%= link_to "Show Details", user_session_path, style: "color: grey; text-decoration: none;opacity: 0.7;" %>
+      <% end %>
     </div>
   </div>
   <% end %>
