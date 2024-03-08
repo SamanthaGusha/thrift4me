@@ -1,0 +1,76 @@
+<h1>Renter dashboard</h1>
+<h2>My Rentals</h2>
+
+  <% if @rental_requests.any? %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Clothing</th>
+          <th>Renter ID</th>
+          <th>Status</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @rental_requests.each do |request| %>
+          <tr>
+            <td><%= request.clothing.title %></td>
+            <td><%= request.user_id %></td>
+            <td><%= request.status %></td>
+            <td>
+              <% if request.pending? %>
+                <%= button_to "Accept", rental_approval_path(id: request.id, action: 'accept'), method: :post, class: "btn btn-success btn-sm", data: { remote: true } %>
+              <% end %>
+            </td>
+            <td>
+              <% if request.pending? %>
+                <%= button_to "Reject", rental_rejection_path(id: request.id, action: 'reject'), method: :post, class: "btn btn-danger btn-sm", data: { remote: true } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>You don't have any rental requests yet.</p>
+  <% end %>
+
+<h2>Past Rentals</h2>
+<% if @past_rentals.any? %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Clothing</th>
+        <th>Renter</th>
+        <th>Rental Dates</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @past_rentals.each do |request| %>
+        <tr>
+          <td><%= request.clothing.title %></td>
+          <td><%= request.user_id %></td>
+<!--          <td><%#= "#{request.from} - #{request.to}" %></td>
+-->        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>You don't have any past rentals yet.</p>
+<% end %>
+<!--<h3>My Rented Items</h3>-->
+<%# @rental_requests.each do |rental| %>
+<!--<p><%#= rental.clothing.title %><p>
+<div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+<button type="submit" class="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white">Accept</button>
+</div>
+<%# end %>-->
+<%# end %>
+<%# @rental_request.each do |rental| %>
+<!--<div>
+<p>Clothing Name: <%#= rental.clothing.title %></p>
+<p>Status: <%#= rental.status %></p>
+</div>
+<%# end %>-->
+<!--</div>
+-->

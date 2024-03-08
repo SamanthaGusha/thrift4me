@@ -17,11 +17,13 @@ User.destroy_all
 
 # Users
 puts "Creating users"
-user1 = User.create!(email: "user1@thrift.com", password: "password", first_name: "John", last_name: "Doe", address: "Buitengracht St")
-user2 = User.create!(email: "user2@thrift.com", password: "password", first_name: "Jane", last_name: "Smith", address: "Bree St")
-user3 = User.create!(email: "user3@thrift.com", password: "password", first_name: "Alice", last_name: "Johnson", address: "Bay Rd")
-user4 = User.create!(email: "user4@thrift.com", password: "password", first_name: "Bob", last_name: "Williams", address: "Totnes Ave")
-user5 = User.create!(email: "user5@thrift.com", password: "password", first_name: "Rue", last_name: "Brown", address: "Cramond Rd")
+
+user1 = User.create!(email: "user1@thrift.com", password: "password", first_name: "John", last_name: "Doe", address: "Buitengracht St", renter: true)
+user2 = User.create!(email: "user2@thrift.com", password: "password", first_name: "Jane", last_name: "Smith", address: "Bree St", renter: true)
+user3 = User.create!(email: "user3@thrift.com", password: "password", first_name: "Alice", last_name: "Johnson", address: "Bay Rd", renter: true)
+user4 = User.create!(email: "user4@thrift.com", password: "password", first_name: "Bob", last_name: "Williams", address: "Totnes Ave", renter: false)
+user5 = User.create!(email: "user5@thrift.com", password: "password", first_name: "Rue", last_name: "Brown", address: "Cramond Rd", renter: false)
+
 puts "#{User.count} users created"
 
 # Clothings
@@ -90,7 +92,7 @@ clothing5.save
 
 # Rentals
 Rental.create!(
-  status: "available",
+  status: "pending",
   from: Date.today,
   to: Date.today + 7.days,
   clothing_id: clothing1.id,
@@ -98,7 +100,7 @@ Rental.create!(
 )
 
 Rental.create!(
-  status: "rented",
+  status: "approved",
   from: Date.today,
   to: Date.today + 2.days,
   clothing_id: clothing2.id,
@@ -106,7 +108,7 @@ Rental.create!(
 )
 
 Rental.create!(
-  status: "available",
+  status: "pending",
   from: Date.today,
   to: Date.today + 5.days,
   clothing_id: clothing3.id,
@@ -114,7 +116,7 @@ Rental.create!(
 )
 
 Rental.create!(
-  status: "rented",
+  status: "pending",
   from: Date.today,
   to: Date.today + 10.days,
   clothing_id: clothing4.id,
@@ -122,7 +124,7 @@ Rental.create!(
 )
 
 Rental.create!(
-  status: "available",
+  status: "pending",
   from: Date.today,
   to: Date.today + 3.days,
   clothing_id: clothing5.id,

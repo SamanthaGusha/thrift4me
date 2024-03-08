@@ -1,7 +1,13 @@
 class Rental < ApplicationRecord
   belongs_to :clothing
   belongs_to :user
-  validates :status, inclusion: { in: %w[pending approved rejected returned] }, presence: true
+
+  enum :status, { pending: 0, approved: 1, rejected: 2 }
+
+  def self.pending?
+    status == "pending"
+  end
+
 end
 
 # sam is to do the seed file

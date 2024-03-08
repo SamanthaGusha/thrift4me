@@ -10,21 +10,36 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <%# if user_signed_in? %>-->
-<!--          <li class="nav-item active">-->
-            <%#= link_to "Home", root_path, class: "nav-link" %>
-<!--          </li>
+
+        <% if user_signed_in? %>
+<!--          <li class="nav-item active">
+-->            <%#= link_to "Dashboard", user_dashboards_path(current_user), class: "nav-link" %> <!--changed root--><!---->
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="<%= dashboard_renter_path %>">My Rentals</a></li>
+              <li><a class="dropdown-item" href="<%= dashboard_rentee_path %>">Rented Items</a></li>
+            </ul>
+          </div>
+          </li>
+
           <li class="nav-item">
-            <%#= link_to "Messages", "#", class: "nav-link" %>-->
-<!--          </li>
+            <%= link_to "Home", "#", class: "nav-link" %>
+          </li>
+
+
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>-->
 <!--          </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%#= link_to "Action", "#", class: "dropdown-item" %>-->
-              <%#= link_to "Another action", "#", class: "dropdown-item" %>
-<!--            </div>
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another Action", "#", class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+
           </li>
         <%# else %>-->
 <!--          <li class="nav-item">-->
