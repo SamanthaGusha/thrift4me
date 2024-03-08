@@ -8,6 +8,7 @@
         <th>Clothing</th>
         <th>Renter</th>
         <th>Rental Dates</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
@@ -15,9 +16,10 @@
         <%# if request == 'accept' %>
           <tr>
             <td><%= request.clothing.title %></td>
-            <td><%= request.user.email %></td>
+            <td><%= request.clothing.user.email %></td>
             <td><%= "#{request.from} - #{request.to}" %></td>
--->        </tr>
+            <td><%= request.status %></td>
+          </tr>
           <% end %>
         <%# end %>
     </tbody>
