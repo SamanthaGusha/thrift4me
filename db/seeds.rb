@@ -7,14 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
 # Clear the database to avoid duplication errors
 puts "Clearing the database"
 Rental.destroy_all
 Clothing.all.each { |cloth| cloth.photo.purge }
 Clothing.destroy_all
 User.destroy_all
-
 # Users
 puts "Creating users"
 user1 = User.create!(email: "user1@thrift.com", password: "password", first_name: "John", last_name: "Doe", address: "Buitengracht St")
@@ -23,7 +21,6 @@ user3 = User.create!(email: "user3@thrift.com", password: "password", first_name
 user4 = User.create!(email: "user4@thrift.com", password: "password", first_name: "Bob", last_name: "Williams", address: "Totnes Ave")
 user5 = User.create!(email: "user5@thrift.com", password: "password", first_name: "Rue", last_name: "Brown", address: "Cramond Rd")
 puts "#{User.count} users created"
-
 # Clothings
 image_1 = URI.open("https://cdn-img.prettylittlething.com/3/c/9/5/3c95a37cdb5a5906a098c4b30d7f8ec162af7896_cmh4320_1.jpg")
 clothing1 = Clothing.create!(
@@ -36,20 +33,17 @@ clothing1 = Clothing.create!(
 )
 clothing1.photo.attach(io: image_1, filename: 'nes.png', content_type: "image/png")
 clothing1.save
-
 image_2 = URI.open("https://jamclothing.co.za/wp-content/uploads/2024/02/H7A2078.jpg")
 clothing2 = Clothing.create!(
   title: "Retro Floral Dress",
-  description: "Beautiful retro dress with floral pattern. Perfect for any vintage lover!",
+  description: "Beautiful retro dress with floral pattern.",
   price: 35.0,
   size: "S",
   user_id: user2.id,
   address: "Bree St"
-
 )
 clothing2.photo.attach(io: image_2, filename: 'nes.png', content_type: "image/png")
 clothing2.save
-
 image_3 = URI.open("https://cdn.zando.co.za/p/429239-3929-932924-2-zoom.jpg")
 clothing3 = Clothing.create!(
   title: "Leather Biker Jacket",
@@ -59,10 +53,8 @@ clothing3 = Clothing.create!(
   user_id: user3.id,
   address: "Bay Rd"
 )
-
 clothing3.photo.attach(io: image_3, filename: 'nes.png', content_type: "image/png")
 clothing3.save
-
 image_4 = URI.open("https://cdn.media.amplience.net/i/mrpricegroup/01_102816954_SI_00?$preset.jpg")
 clothing4 = Clothing.create!(
   title: "Striped T-shirt",
@@ -74,7 +66,6 @@ clothing4 = Clothing.create!(
 )
 clothing4.photo.attach(io: image_4, filename: 'nes.png', content_type: "image/png")
 clothing4.save
-
 image_5 = URI.open("https://thefoschini.vtexassets.com/arquivos/ids/108948787-1200-1200?v=638425827191100000&width=1200&height=1200&aspect=true.jpg")
 clothing5 = Clothing.create!(
   title: "Boyfriend Jeans",
@@ -84,49 +75,43 @@ clothing5 = Clothing.create!(
   user_id: user5.id,
   address: "Cramond Rd"
 )
-
 clothing5.photo.attach(io: image_5, filename: 'nes.png', content_type: "image/png")
 clothing5.save
 
 # Rentals
 Rental.create!(
-  status: "available",
+  status: "pending",
   from: Date.today,
   to: Date.today + 7.days,
   clothing_id: clothing1.id,
   user_id: user1.id
 )
-
 Rental.create!(
-  status: "rented",
+  status: "returned",
   from: Date.today,
   to: Date.today + 2.days,
   clothing_id: clothing2.id,
   user_id: user2.id
 )
-
 Rental.create!(
-  status: "available",
+  status: "pending",
   from: Date.today,
   to: Date.today + 5.days,
   clothing_id: clothing3.id,
   user_id: user3.id
 )
-
 Rental.create!(
-  status: "rented",
+  status: "rejected",
   from: Date.today,
   to: Date.today + 10.days,
   clothing_id: clothing4.id,
   user_id: user4.id
 )
-
 Rental.create!(
-  status: "available",
+  status: "approved",
   from: Date.today,
   to: Date.today + 3.days,
   clothing_id: clothing5.id,
   user_id: user5.id
 )
-
 puts "Seeded database with #{User.count} users, #{Clothing.count} clothings, and #{Rental.count} rentals."
